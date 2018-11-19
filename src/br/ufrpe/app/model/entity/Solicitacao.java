@@ -5,5 +5,7 @@ public class Solicitacao {
 	//Testando novamente
 	//Oi
 	//Editando no Eclipse
+	//Editado no GIT
+
 
 }
