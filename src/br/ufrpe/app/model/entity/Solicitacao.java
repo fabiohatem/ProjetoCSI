@@ -4,5 +4,6 @@ public class Solicitacao {
 	//Teste GIT
 	//Testando novamente
 	//Oi
+	//Editado no GIT
 
 }
