@@ -6,6 +6,7 @@ public class ServicoRepository {
 
 	public static Servico[] servicos = new Servico[100];
 	private static boolean estaIniciado = false;
+	public static int totalDeServicosInicial = 4;
 	
 	public static void iniciaRepository() {
 		if(!estaIniciado) {
