@@ -14,10 +14,12 @@ public interface ServicoDao {
 	
 	int tamanho();
 	
-	boolean criar (Servico servico);
+	void criar (Servico servico);
 	
-	boolean criar (int posicao, Servico servico);
+	void criar (int posicao, Servico servico);
 	
-	boolean atualizar (Servico servico);
+	void atualizar (Servico servico);
+	
+	void deletar (int posicao);
 	
 }
