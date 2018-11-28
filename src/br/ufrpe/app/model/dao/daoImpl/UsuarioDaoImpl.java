@@ -15,7 +15,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
 	@Override
 	public Usuario[] findAll() {
-		return UsuarioRepository.usuarios;
+		return UsuarioRepository.usuarios;//
 	}
 
 	@Override
