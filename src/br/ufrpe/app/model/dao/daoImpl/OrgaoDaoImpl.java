@@ -1,10 +1,12 @@
 package br.ufrpe.app.model.dao.daoImpl;
 
+import java.io.Serializable;
+
 import br.ufrpe.app.model.dao.OrgaoDao;
 import br.ufrpe.app.model.entity.Orgao;
 import br.ufrpe.app.model.repository.OrgaoRepository;
 
-public class OrgaoDaoImpl implements OrgaoDao {
+public class OrgaoDaoImpl implements OrgaoDao , Serializable{
 
 	private int totalDeOrgaos = 0;
 
@@ -107,4 +109,6 @@ public class OrgaoDaoImpl implements OrgaoDao {
 		}
 	}
 	
-}
+
+	}
+
