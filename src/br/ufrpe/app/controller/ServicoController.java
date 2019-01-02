@@ -3,29 +3,31 @@ package br.ufrpe.app.controller;
 import br.ufrpe.app.model.dao.ServicoDao;
 import br.ufrpe.app.model.dao.daoImpl.ServicoDaoImpl;
 import br.ufrpe.app.model.entity.Servico;
+import br.ufrpe.app.util.exception.ServicoException;
+
 
 public class ServicoController {
 	
 	ServicoDao servicoDao = new ServicoDaoImpl();
 	
-	public Servico[] acharTudo() {
-		return servicoDao.acharTudo();
+	public Servico[] findAll() {
+		return servicoDao.findAll();
 	}
 
-	public Servico acharPeloNome(String nome) {
-		return servicoDao.acharPeloNome(nome);
+	public Servico findByNome(String nome) {
+		return servicoDao.findByNome(nome);
 	}
 	
-	public void criar(Servico servico) {
-		servicoDao.criar(servico);
+	public void create(Servico servico) throws ServicoException {
+		servicoDao.create(servico);
 	}
 
-	public void atualizar(Servico servico) {
-		servicoDao.atualizar(servico);
+	public void update(Servico servico) {
+		servicoDao.update(servico);
 	}
 
-	public void deletar(int posicao) {
-		servicoDao.deletar(posicao);
+	public void delete(String nome) {
+		servicoDao.delete(nome);
 	}
 	
 }
