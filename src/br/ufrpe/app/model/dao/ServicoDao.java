@@ -1,25 +1,25 @@
 package br.ufrpe.app.model.dao;
 
 import br.ufrpe.app.model.entity.Servico;
+import br.ufrpe.app.util.exception.ServicoException;
 
 public interface ServicoDao {
 
-	Servico[] acharTudo();
-	
-	Servico acharPeloNome(String nome);
-	
-	Servico acharPelaPosicao (int posicao);
-	
-	boolean contem (Servico servico);
-	
+	void salvarArquivo();
+
+	Servico[] findAll();
+
+	Servico findByNome(String nome);
+
+	boolean contem(Servico servico);
+
 	int tamanho();
-	
-	void criar (Servico servico);
-	
-	void criar (int posicao, Servico servico);
-	
-	void atualizar (Servico servico);
-	
-	void deletar (int posicao);
+
+	void create(Servico servico) throws ServicoException;
+
+	void update(Servico servico);
+
+	void delete(String nome);
+
 	
 }
