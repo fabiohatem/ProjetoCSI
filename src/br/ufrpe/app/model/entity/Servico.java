@@ -1,8 +1,12 @@
 package br.ufrpe.app.model.entity;
 
-public class Servico {
+import java.io.Serializable;
+
+public class Servico implements Serializable {
+	
 	private String nome;
 	private String descricao;
+	private static final long serialVersionUID = 1L;
 	
 	public Servico() {
 	
