@@ -4,8 +4,11 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ServicoView {
 
@@ -69,6 +72,18 @@ public class ServicoView {
 		frame.getContentPane().add(lblDescrio);
 		
 		JButton btnNovo = new JButton("Novo");
+		btnNovo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(checkExistencia(txtNome.getText(), textField.getText())) {
+		
+					JOptionPane.showMessageDialog(null, "Serviço já foi cadastrado", "Tela de cadastro de serviço", JOptionPane.ERROR_MESSAGE);
+				} else {
+					
+					JOptionPane.showMessageDialog(null, "Serviço cadastrado");
+					
+				}
+			}
+		});
 		btnNovo.setBounds(252, 157, 89, 23);
 		frame.getContentPane().add(btnNovo);
 		
@@ -84,5 +99,9 @@ public class ServicoView {
 		textField.setColumns(10);
 		textField.setBounds(10, 227, 165, 34);
 		frame.getContentPane().add(textField);
+	}
+	
+	public boolean checkExistencia (String nome, String descricao) {
+		return nome.equals("CPU") && descricao.equals("Nao liga");
 	}
 }
