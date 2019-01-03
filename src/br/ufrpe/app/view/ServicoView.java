@@ -14,7 +14,7 @@ public class ServicoView {
 
 	private JFrame frame;
 	private JTextField txtNome;
-	private JTextField textField;
+	private JTextField txtDescricao;
 
 	/**
 	 * Launch the application.
@@ -74,12 +74,12 @@ public class ServicoView {
 		JButton btnNovo = new JButton("Novo");
 		btnNovo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(checkExistencia(txtNome.getText(), textField.getText())) {
+				if(checkExistencia(txtNome.getText(), txtDescricao.getText())) {
 		
 					JOptionPane.showMessageDialog(null, "Serviço já foi cadastrado", "Tela de cadastro de serviço", JOptionPane.ERROR_MESSAGE);
 				} else {
 					
-					JOptionPane.showMessageDialog(null, "Serviço cadastrado");
+					JOptionPane.showMessageDialog(null, "Serviço cadastrado", "Tela de cadastro de serviço", JOptionPane.INFORMATION_MESSAGE);
 					
 				}
 			}
@@ -95,10 +95,10 @@ public class ServicoView {
 		btnVisualizar.setBounds(252, 222, 89, 23);
 		frame.getContentPane().add(btnVisualizar);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(10, 227, 165, 34);
-		frame.getContentPane().add(textField);
+		txtDescricao = new JTextField();
+		txtDescricao.setColumns(10);
+		txtDescricao.setBounds(10, 227, 165, 34);
+		frame.getContentPane().add(txtDescricao);
 	}
 	
 	public boolean checkExistencia (String nome, String descricao) {
