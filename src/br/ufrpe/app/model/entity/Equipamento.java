@@ -10,6 +10,10 @@ public class Equipamento implements Serializable{
 	private String tipo;
 	private ItemEquipamento itens;
 	private boolean composto;
+	
+	
+
+	
 
 	public Equipamento() {
 
