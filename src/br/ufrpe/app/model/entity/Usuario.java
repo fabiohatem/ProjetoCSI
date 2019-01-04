@@ -1,7 +1,10 @@
 package br.ufrpe.app.model.entity;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable{
 	
+	private static final long serialVersionUID = 1l;
 	private String nome;
 	private String matricula;
 	private String login;
@@ -43,6 +46,7 @@ public class Usuario {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((matricula == null) ? 0 : matricula.hashCode());
 		return result;
 	}
@@ -58,6 +62,11 @@ public class Usuario {
 		if (matricula == null) {
 			if (other.matricula != null)
 				return false;
+		} else if (!login.equals(other.login))
+			return false;
+		if (matricula == null) {
+			if (other.matricula != null)
+				return false;
 		} else if (!matricula.equals(other.matricula))
 			return false;
 		return true;
@@ -67,5 +76,4 @@ public class Usuario {
 		return "Usuario [nome=" + nome + ", matricula=" + matricula + ", login=" + login + "]";
 	}
 	
-
 }
