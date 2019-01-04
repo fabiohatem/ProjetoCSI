@@ -91,7 +91,7 @@ public class Equipamento implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Equipamento [descrição=" + descricao + ", codigo=" + codigo + ", tipo=" + tipo + "]";
+		return "Equipamento [descrição:" + descricao + ", codigo:" + codigo + ", tipo:" + tipo + "]";
 	}
 
 }
