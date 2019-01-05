@@ -1,24 +1,25 @@
 package br.ufrpe.app.model.dao;
 
 import br.ufrpe.app.model.entity.Orgao;
+import br.ufrpe.app.util.exception.OrgaoException;
 
 public interface OrgaoDao {
 
+	void salvarArquivo();
+
 	Orgao[] findAll();
 
-	Orgao findSigla  ( String sigla);
+	Orgao findBySigla(String sigla);
 
-	Orgao findPosicao  (int posicao);
-
-	boolean contem  (Orgao orgao);
+	boolean contem(Orgao orgao);
 
 	int tamanho();
 
-	void criar (int posicao, Orgao orgao);
-	void criar  (Orgao orgao);
-	void update  (Orgao orgao);
+	void create(Orgao orgao) throws OrgaoException;
 
-	void delete  (int posicao);
+	void update(Orgao orgao);
+
+	void delete(String sigla);
 
 	
 }
