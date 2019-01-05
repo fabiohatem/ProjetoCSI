@@ -1,26 +1,26 @@
 package br.ufrpe.app.model.dao;
 
 import br.ufrpe.app.model.entity.Equipamento;
+import br.ufrpe.app.util.exception.EquipamentoException;
+
 
 public interface EquipamentoDao {
 
-		Equipamento[] findAll();
+	void salvarArquivo();
 
-		Equipamento findByCodigo(String codigo);
+	Equipamento[] findAll();
 
-		Equipamento findByPosicao(int posicao);
+	Equipamento findByCodigo(String codigo);
 
-		boolean contem(Equipamento equipamento);
+	boolean contem(Equipamento equipamento);
 
-		int tamanho();
+	int tamanho();
 
-		void create(Equipamento equipamento);
+	void create(Equipamento equipamento) throws EquipamentoException;
 
-		void create(int posicao, Equipamento equipamento);
+	void update(Equipamento equipamento);
 
-		void update(Equipamento equipamento);
-
-		void delete(int posicao);
+	void delete(String codigo);
 
 	}
 
