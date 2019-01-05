@@ -37,7 +37,7 @@ public class EquipamentoDaoImpl implements EquipamentoDao, Serializable {
 		public static EquipamentoDaoImpl lerDoArquivo() {
 			EquipamentoDaoImpl instanciaLocal = null;
 
-			File in = new File("equipamento.dat");
+			File in = new File("equipamentos.dat");
 			FileInputStream fis = null;
 			ObjectInputStream ois = null;
 			try {
@@ -64,7 +64,7 @@ public class EquipamentoDaoImpl implements EquipamentoDao, Serializable {
 			if (instance == null) {
 				return;
 			}
-			File out = new File("equipamento.dat");
+			File out = new File("equipamentos.dat");
 			FileOutputStream fos = null;
 			ObjectOutputStream oos = null;
 
