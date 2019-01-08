@@ -13,6 +13,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import br.ufrpe.app.controller.CsiFacade;
+import br.ufrpe.app.model.dao.ServicoDao;
+import br.ufrpe.app.model.dao.UsuarioDao;
+import br.ufrpe.app.model.dao.daoImpl.ServicoDaoImpl;
+import br.ufrpe.app.model.dao.daoImpl.UsuarioDaoImpl;
+import br.ufrpe.app.model.entity.Usuario;
+import br.ufrpe.app.util.exception.UsuarioException;
+
 import javax.swing.DropMode;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -68,7 +77,23 @@ public class UsuarioViewTeste {
 	 * Create the application.
 	 */
 	public UsuarioViewTeste() {
+		
+		CsiFacade facade = new CsiFacade();
+		UsuarioDao ser = UsuarioDaoImpl.getInstance();
+		
+		//Criando um usuário para teste....
+		Usuario usTest = new Usuario("abc","abc","abc","abc");
+		try {
+			ser.create(usTest);
+			System.out.println("usuário cadastrado!");
+		} catch (UsuarioException e1) {
+			// TODO Auto-generated catch block
+			System.out.println("usuário não cadrastado!");
+		}
+		
+		
 		initialize();
+		
 	}
 
 	/**
@@ -132,6 +157,33 @@ public class UsuarioViewTeste {
 		btnEntrar.setHorizontalAlignment(SwingConstants.LEFT);
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				String login = txtLogin.getText();
+				String senha = txtSenha.getText();
+				String nome = textField.getText();
+				String matricula = textField_1.getText();
+				
+				Usuario usuario = new Usuario(nome,matricula,login, senha);
+				
+				CsiFacade facade = new CsiFacade();
+				UsuarioDao ser = UsuarioDaoImpl.getInstance();
+				
+				
+				boolean tem = ser.contem(usuario);
+				if(tem == true) {
+					// Chamar tela caso usuário seja encontrado
+					JOptionPane.showMessageDialog(null, "Usuário encontrado!");
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Usuário não encontrado!");
+				}
+				
+				
+				
+				
+				
+				
 				/*if(checkLogin(txtLogin.getText(), txtSenha.getText())) {
 					JOptionPane.showMessageDialog(null, "Dados inválidos", "Tela de cadastro de usuário", JOptionPane.ERROR_MESSAGE);
 				} else {

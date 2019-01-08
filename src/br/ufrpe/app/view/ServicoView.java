@@ -12,6 +12,13 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import br.ufrpe.app.controller.CsiFacade;
+import br.ufrpe.app.model.dao.ServicoDao;
+import br.ufrpe.app.model.dao.daoImpl.ServicoDaoImpl;
+import br.ufrpe.app.model.entity.Servico;
+import br.ufrpe.app.util.exception.ServicoException;
+
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 
@@ -89,14 +96,33 @@ public class ServicoView {
 		btnNovo.setForeground(Color.WHITE);
 		btnNovo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(checkExistencia(txtNome.getText(), txtDescricao.getText())) {
+				
+				String nome = txtNome.getText();
+				String descricao = txtDescricao.getText();
+				
+				Servico servico = new Servico(nome, descricao);
+				
+				CsiFacade facade = new CsiFacade();
+				ServicoDao ser = ServicoDaoImpl.getInstance();
+				
+				try {
+					ser.create(servico);
+					ser.salvarArquivo();
+					JOptionPane.showMessageDialog(null, "Serviço cadastrado", "Tela de cadastro de serviço", JOptionPane.INFORMATION_MESSAGE);
+				} catch (ServicoException e) {
+					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(null, "Serviço ja cadastrado", "Tela de cadastro de serviço", JOptionPane.INFORMATION_MESSAGE);
+				}
+				
+				
+			/*	if(checkExistencia(txtNome.getText(), txtDescricao.getText())) {
 		
 					JOptionPane.showMessageDialog(null, "Serviço já foi cadastrado", "Tela de cadastro de serviço", JOptionPane.ERROR_MESSAGE);
 				} else {
 					
 					JOptionPane.showMessageDialog(null, "Serviço cadastrado", "Tela de cadastro de serviço", JOptionPane.INFORMATION_MESSAGE);
 					
-				}
+				}*/
 			}
 		});
 		ServicoView.getContentPane().add(btnNovo);

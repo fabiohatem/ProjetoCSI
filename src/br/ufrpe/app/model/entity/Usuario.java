@@ -12,11 +12,12 @@ public class Usuario implements Serializable{
 	public Usuario() {
 		
 	}
-	public Usuario(String nome, String matricula, String login) {
+	public Usuario(String nome, String matricula, String login, String senha) {
 		super();
 		this.nome = nome;
 		this.matricula = matricula;
 		this.login = login;
+		this.senha = senha;
 	}
 	public String getNome() {
 		return nome;

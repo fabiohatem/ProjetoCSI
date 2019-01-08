@@ -13,7 +13,7 @@ public class ServicoTest {
 		CsiFacade facade = new CsiFacade();
 		ServicoDao ser = ServicoDaoImpl.getInstance();
 		
-		Servico s = new Servico("Microfone","Sem pegar");
+		Servico s = new Servico("edddd","Sem pegar");
 		// Servico s = ServicoDao.findByNome("CPU");
 		ser.create(s);
 		ser.salvarArquivo();
