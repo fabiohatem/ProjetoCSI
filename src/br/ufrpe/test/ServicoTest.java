@@ -13,12 +13,13 @@ public class ServicoTest {
 		CsiFacade facade = new CsiFacade();
 		ServicoDao ser = ServicoDaoImpl.getInstance();
 		
-		Servico s = new Servico("" ,"");
+		Servico s = new Servico("Mousepad","Sem pegar");
 		// Servico s = ServicoDao.findByNome("CPU");
 		ser.create(s);
 		ser.salvarArquivo();
-		Servico t = ser.findByNome("RAM");
+		ser.delete("Monitor");
 		System.out.println(s);
+		System.out.println();
 		
 		Servico[] se = facade.findAllServico();
 		for (int i = 0; i < se.length; i++) {
