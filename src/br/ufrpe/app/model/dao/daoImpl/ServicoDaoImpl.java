@@ -86,11 +86,11 @@ public class ServicoDaoImpl implements ServicoDao, Serializable{
 
 	@Override
 	public Servico[] findAll() {
-		Servico us[] = new Servico[tamanho()];
-		for (int i = 0; i < us.length; i++) {
-			us[i] = servicos[i];
+		Servico se[] = new Servico[tamanho()];
+		for (int i = 0; i < se.length; i++) {
+			se[i] = servicos[i];
 		}
-		return us;
+		return se;
 	}
 
 	@Override
