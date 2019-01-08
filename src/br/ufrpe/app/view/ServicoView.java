@@ -9,10 +9,15 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.JPanel;
+import javax.swing.ImageIcon;
 
 public class ServicoView {
 
-	private JFrame frame;
+	private JFrame ServicoView;
 	private JTextField txtNome;
 	private JTextField txtDescricao;
 
@@ -34,7 +39,7 @@ public class ServicoView {
 			public void run() {
 				try {
 					ServicoView window = new ServicoView();
-					window.frame.setVisible(true);
+					window.ServicoView.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -53,25 +58,35 @@ public class ServicoView {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 449, 328);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		ServicoView = new JFrame();
+		ServicoView.setTitle(" Servi\u00E7os");
+		ServicoView.getContentPane().setBackground(Color.WHITE);
+		ServicoView.setBounds(100, 100, 620, 420);
+		ServicoView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ServicoView.getContentPane().setLayout(null);
 		
 		JLabel lblNome = new JLabel("Nome");
-		lblNome.setBounds(10, 128, 54, 22);
-		frame.getContentPane().add(lblNome);
+		lblNome.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNome.setBounds(10, 189, 54, 22);
+		lblNome.setFont(new Font("Tahoma", Font.BOLD, 11));
+		ServicoView.getContentPane().add(lblNome);
 		
 		txtNome = new JTextField();
-		txtNome.setBounds(10, 157, 165, 34);
-		frame.getContentPane().add(txtNome);
+		txtNome.setBounds(10, 218, 217, 27);
+		ServicoView.getContentPane().add(txtNome);
 		txtNome.setColumns(10);
 		
 		JLabel lblDescrio = new JLabel("Descri\u00E7\u00E3o");
-		lblDescrio.setBounds(10, 202, 60, 22);
-		frame.getContentPane().add(lblDescrio);
+		lblDescrio.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDescrio.setBounds(10, 263, 60, 22);
+		lblDescrio.setFont(new Font("Tahoma", Font.BOLD, 11));
+		ServicoView.getContentPane().add(lblDescrio);
 		
 		JButton btnNovo = new JButton("Novo");
+		btnNovo.setBounds(255, 282, 143, 34);
+		btnNovo.setBackground(Color.BLUE);
+		btnNovo.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnNovo.setForeground(Color.WHITE);
 		btnNovo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(checkExistencia(txtNome.getText(), txtDescricao.getText())) {
@@ -84,31 +99,48 @@ public class ServicoView {
 				}
 			}
 		});
-		btnNovo.setBounds(252, 157, 89, 23);
-		frame.getContentPane().add(btnNovo);
-		
-		JButton btnAtualizar = new JButton("Atualizar");
-		btnAtualizar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
-		btnAtualizar.setBounds(252, 188, 89, 23);
-		frame.getContentPane().add(btnAtualizar);
-		
-		JButton btnVisualizar = new JButton("Visualizar");
-		btnVisualizar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		btnVisualizar.setBounds(252, 222, 89, 23);
-		frame.getContentPane().add(btnVisualizar);
+		ServicoView.getContentPane().add(btnNovo);
 		
 		txtDescricao = new JTextField();
+		txtDescricao.setBounds(10, 288, 217, 27);
 		txtDescricao.setColumns(10);
-		txtDescricao.setBounds(10, 227, 165, 34);
-		frame.getContentPane().add(txtDescricao);
+		ServicoView.getContentPane().add(txtDescricao);
+		
+		JButton button = new JButton("Atualizar");
+		button.setBounds(422, 282, 143, 34);
+		button.setForeground(Color.WHITE);
+		button.setFont(new Font("Tahoma", Font.BOLD, 14));
+		button.setBackground(Color.BLUE);
+		ServicoView.getContentPane().add(button);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 604, 162);
+		panel.setBackground(Color.BLUE);
+		ServicoView.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Ricardo\\Downloads\\customer-service_icon-icons.com_51012.png"));
+		lblNewLabel.setBounds(269, 35, 64, 64);
+		panel.add(lblNewLabel);
+		
+		JLabel lblreaDeServios = new JLabel("\u00C1rea de Servi\u00E7os");
+		lblreaDeServios.setHorizontalAlignment(SwingConstants.CENTER);
+		lblreaDeServios.setForeground(Color.WHITE);
+		lblreaDeServios.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblreaDeServios.setBounds(224, 110, 155, 22);
+		panel.add(lblreaDeServios);
+		
+		JButton button_1 = new JButton("Remover");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		button_1.setForeground(Color.WHITE);
+		button_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		button_1.setBackground(Color.BLUE);
+		button_1.setBounds(255, 327, 143, 34);
+		ServicoView.getContentPane().add(button_1);
 	}
 	
 	public boolean checkExistencia (String nome, String descricao) {
