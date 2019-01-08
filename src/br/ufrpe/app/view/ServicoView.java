@@ -88,10 +88,20 @@ public class ServicoView {
 		frame.getContentPane().add(btnNovo);
 		
 		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		btnAtualizar.setBounds(252, 188, 89, 23);
 		frame.getContentPane().add(btnAtualizar);
 		
 		JButton btnVisualizar = new JButton("Visualizar");
+		btnVisualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnVisualizar.setBounds(252, 222, 89, 23);
 		frame.getContentPane().add(btnVisualizar);
 		
