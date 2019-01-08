@@ -67,7 +67,7 @@ public class Servico implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Servico [nome=" + nome + ", descricao=" + descricao + "]";
+		return "Servico [Nome = " + nome + ", Descricao = " + descricao + "]";
 	}
 	
 
