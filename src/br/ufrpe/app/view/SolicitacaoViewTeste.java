@@ -15,8 +15,8 @@ import javax.swing.ImageIcon;
 public class SolicitacaoViewTeste {
 
 	private JFrame SolicitacaoView;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField txtCodigo;
+	private JTextField txtDescricao;
 
 	/**
 	 * Launch the application.
@@ -65,20 +65,20 @@ public class SolicitacaoViewTeste {
 		lblNewLabel.setBounds(10, 202, 46, 14);
 		SolicitacaoView.getContentPane().add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(10, 229, 217, 27);
-		SolicitacaoView.getContentPane().add(textField);
+		txtCodigo = new JTextField();
+		txtCodigo.setColumns(10);
+		txtCodigo.setBounds(10, 229, 217, 27);
+		SolicitacaoView.getContentPane().add(txtCodigo);
 		
 		JLabel lblDescrio = new JLabel("Descri\u00E7\u00E3o");
 		lblDescrio.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblDescrio.setBounds(10, 274, 62, 14);
 		SolicitacaoView.getContentPane().add(lblDescrio);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(10, 299, 217, 27);
-		SolicitacaoView.getContentPane().add(textField_1);
+		txtDescricao = new JTextField();
+		txtDescricao.setColumns(10);
+		txtDescricao.setBounds(10, 299, 217, 27);
+		SolicitacaoView.getContentPane().add(txtDescricao);
 		
 		JButton button = new JButton("Novo");
 		button.setForeground(Color.WHITE);
@@ -111,13 +111,13 @@ public class SolicitacaoViewTeste {
 		lblreaDeSolicitaes.setHorizontalAlignment(SwingConstants.CENTER);
 		lblreaDeSolicitaes.setForeground(Color.WHITE);
 		lblreaDeSolicitaes.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblreaDeSolicitaes.setBounds(237, 116, 180, 22);
+		lblreaDeSolicitaes.setBounds(210, 116, 180, 22);
 		panel.add(lblreaDeSolicitaes);
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Ricardo\\Downloads\\low_thecomputer_theapplication_2917.png"));
-		lblNewLabel_1.setBounds(286, 41, 70, 64);
+		lblNewLabel_1.setBounds(259, 41, 70, 64);
 		panel.add(lblNewLabel_1);
 		SolicitacaoView.setBounds(100, 100, 620, 420);
 		SolicitacaoView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

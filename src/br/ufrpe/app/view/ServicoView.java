@@ -74,23 +74,23 @@ public class ServicoView extends javax.swing.JFrame {
 		
 		JLabel lblNome = new JLabel("Nome");
 		lblNome.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNome.setBounds(10, 189, 54, 22);
+		lblNome.setBounds(203, 188, 54, 22);
 		lblNome.setFont(new Font("Tahoma", Font.BOLD, 11));
 		ServicoView.getContentPane().add(lblNome);
 		
 		txtNome = new JTextField();
-		txtNome.setBounds(10, 218, 217, 27);
+		txtNome.setBounds(203, 217, 217, 27);
 		ServicoView.getContentPane().add(txtNome);
 		txtNome.setColumns(10);
 		
 		JLabel lblDescrio = new JLabel("Descri\u00E7\u00E3o");
 		lblDescrio.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDescrio.setBounds(10, 263, 60, 22);
+		lblDescrio.setBounds(203, 262, 60, 22);
 		lblDescrio.setFont(new Font("Tahoma", Font.BOLD, 11));
 		ServicoView.getContentPane().add(lblDescrio);
 		
 		JButton btnNovo = new JButton("Novo");
-		btnNovo.setBounds(255, 212, 143, 34);
+		btnNovo.setBounds(66, 336, 143, 34);
 		btnNovo.setBackground(Color.BLUE);
 		btnNovo.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNovo.setForeground(Color.WHITE);
@@ -127,22 +127,26 @@ public class ServicoView extends javax.swing.JFrame {
 		ServicoView.getContentPane().add(btnNovo);
 		
 		txtDescricao = new JTextField();
-		txtDescricao.setBounds(10, 288, 217, 27);
+		txtDescricao.setBounds(203, 287, 217, 27);
 		txtDescricao.setColumns(10);
 		ServicoView.getContentPane().add(txtDescricao);
 		
 		JButton button = new JButton("Atualizar");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 				CsiFacade facade = new CsiFacade();
+				// Servico servico = new Servico();
+				// ServicoDao ser = ServicoDaoImpl.getInstance();
 				Servico[] se = facade.findAllServico();
-				for (int i = 0; i < se.length; i++) {
+				// ser.update(servico);
+				 for (int i = 0; i < se.length; i++) {
 					//System.out.println(se[i]);
 					JOptionPane.showInputDialog(se[i]);
-					}
+					} 
 			}
 		});
-		button.setBounds(427, 212, 143, 34);
+		button.setBounds(398, 336, 143, 34);
 		button.setForeground(Color.WHITE);
 		button.setFont(new Font("Tahoma", Font.BOLD, 14));
 		button.setBackground(Color.BLUE);
@@ -176,7 +180,7 @@ public class ServicoView extends javax.swing.JFrame {
 		button_1.setForeground(Color.WHITE);
 		button_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		button_1.setBackground(Color.BLUE);
-		button_1.setBounds(255, 282, 143, 34);
+		button_1.setBounds(235, 336, 143, 34);
 		ServicoView.getContentPane().add(button_1);
 	}
 	

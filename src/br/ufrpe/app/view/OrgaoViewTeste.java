@@ -17,8 +17,8 @@ import java.awt.event.ActionEvent;
 public class OrgaoViewTeste {
 
 	private JFrame OrgaoView;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField txtNome;
+	private JTextField txtSigla;
 
 	/**
 	 * Launch the application.
@@ -86,39 +86,39 @@ public class OrgaoViewTeste {
 		JLabel lblNome = new JLabel("Nome");
 		lblNome.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNome.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNome.setBounds(10, 190, 46, 14);
+		lblNome.setBounds(206, 197, 46, 14);
 		OrgaoView.getContentPane().add(lblNome);
 		
 		JLabel lblSigla = new JLabel("Sigla");
 		lblSigla.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSigla.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblSigla.setBounds(10, 263, 46, 14);
+		lblSigla.setBounds(206, 270, 46, 14);
 		OrgaoView.getContentPane().add(lblSigla);
 		
-		textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.LEFT);
-		textField.setBounds(10, 215, 207, 27);
-		OrgaoView.getContentPane().add(textField);
-		textField.setColumns(10);
+		txtNome = new JTextField();
+		txtNome.setHorizontalAlignment(SwingConstants.LEFT);
+		txtNome.setBounds(206, 221, 207, 27);
+		OrgaoView.getContentPane().add(txtNome);
+		txtNome.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setHorizontalAlignment(SwingConstants.LEFT);
-		textField_1.setColumns(10);
-		textField_1.setBounds(10, 288, 207, 27);
-		OrgaoView.getContentPane().add(textField_1);
+		txtSigla = new JTextField();
+		txtSigla.setHorizontalAlignment(SwingConstants.LEFT);
+		txtSigla.setColumns(10);
+		txtSigla.setBounds(206, 295, 207, 27);
+		OrgaoView.getContentPane().add(txtSigla);
 		
 		JButton button = new JButton("Adicionar");
 		button.setForeground(Color.WHITE);
 		button.setFont(new Font("Tahoma", Font.BOLD, 14));
 		button.setBackground(Color.BLUE);
-		button.setBounds(10, 345, 143, 34);
+		button.setBounds(72, 354, 143, 34);
 		OrgaoView.getContentPane().add(button);
 		
 		JButton button_1 = new JButton("Procurar");
 		button_1.setForeground(Color.WHITE);
 		button_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		button_1.setBackground(Color.BLUE);
-		button_1.setBounds(181, 345, 143, 34);
+		button_1.setBounds(243, 354, 143, 34);
 		OrgaoView.getContentPane().add(button_1);
 		
 		JButton button_2 = new JButton("Remover");
@@ -129,7 +129,7 @@ public class OrgaoViewTeste {
 		button_2.setForeground(Color.WHITE);
 		button_2.setFont(new Font("Tahoma", Font.BOLD, 14));
 		button_2.setBackground(Color.BLUE);
-		button_2.setBounds(350, 345, 143, 34);
+		button_2.setBounds(413, 354, 143, 34);
 		OrgaoView.getContentPane().add(button_2);
 		OrgaoView.setBounds(100, 100, 620, 474);
 		OrgaoView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
