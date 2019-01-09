@@ -107,13 +107,16 @@ public class ServicoView extends javax.swing.JFrame {
 				
 				try {
 					ser.create(servico);
+					if(txtNome.getText().trim().equals("") || txtDescricao.getText().trim().equals("")) {
+						JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Tela de cadastro de serviço", JOptionPane.WARNING_MESSAGE);
+					}
 					ser.salvarArquivo();
 					JOptionPane.showMessageDialog(null, "Serviço cadastrado", "Tela de cadastro de serviço", JOptionPane.INFORMATION_MESSAGE);
 				} catch (ServicoException e) {
 					JOptionPane.showMessageDialog(null, "Serviço já foi cadastrado", "Tela de cadastro de serviço", JOptionPane.ERROR_MESSAGE);
 				}
 				
-				
+	
 			/*	if(checkExistencia(txtNome.getText(), txtDescricao.getText())) {
 		
 					JOptionPane.showMessageDialog(null, "Serviço já foi cadastrado", "Tela de cadastro de serviço", JOptionPane.ERROR_MESSAGE);
@@ -173,6 +176,19 @@ public class ServicoView extends javax.swing.JFrame {
 		JButton button_1 = new JButton("Remover");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				CsiFacade facade = new CsiFacade();
+				String nome = txtNome.getText();
+				ServicoDao ser = ServicoDaoImpl.getInstance();
+				
+				try {
+					ser.findByNome(nome);
+					JOptionPane.showMessageDialog(null, "Serviço achado e removido com sucesso", "Tela de cadastro de serviço", JOptionPane.INFORMATION_MESSAGE);
+					ser.delete(nome);
+				} catch (Exception error) {
+					JOptionPane.showMessageDialog(null, "Serviço não foi achado", "Tela de cadastro de serviço", JOptionPane.ERROR_MESSAGE);
+				}
+				
 				
 				
 			}		
