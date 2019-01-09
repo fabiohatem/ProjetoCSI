@@ -13,11 +13,11 @@ public class ServicoTest {
 		CsiFacade facade = new CsiFacade();
 		ServicoDao ser = ServicoDaoImpl.getInstance();
 		
-		Servico s = new Servico("edddd","Sem pegar");
+		Servico s = new Servico("RAM","falha na memoria");
 		// Servico s = ServicoDao.findByNome("CPU");
 		ser.create(s);
 		ser.salvarArquivo();
-		ser.delete("Monitor");
+		// ser.delete("Monitor");
 		System.out.println(s);
 		System.out.println();
 		

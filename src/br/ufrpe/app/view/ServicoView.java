@@ -22,7 +22,7 @@ import br.ufrpe.app.util.exception.ServicoException;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 
-public class ServicoView {
+public class ServicoView extends javax.swing.JFrame {
 
 	private JFrame ServicoView;
 	private JTextField txtNome;
@@ -90,7 +90,7 @@ public class ServicoView {
 		ServicoView.getContentPane().add(lblDescrio);
 		
 		JButton btnNovo = new JButton("Novo");
-		btnNovo.setBounds(255, 282, 143, 34);
+		btnNovo.setBounds(255, 212, 143, 34);
 		btnNovo.setBackground(Color.BLUE);
 		btnNovo.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnNovo.setForeground(Color.WHITE);
@@ -110,8 +110,7 @@ public class ServicoView {
 					ser.salvarArquivo();
 					JOptionPane.showMessageDialog(null, "Serviço cadastrado", "Tela de cadastro de serviço", JOptionPane.INFORMATION_MESSAGE);
 				} catch (ServicoException e) {
-					// TODO Auto-generated catch block
-					JOptionPane.showMessageDialog(null, "Serviço ja cadastrado", "Tela de cadastro de serviço", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Serviço já foi cadastrado", "Tela de cadastro de serviço", JOptionPane.ERROR_MESSAGE);
 				}
 				
 				
@@ -133,7 +132,17 @@ public class ServicoView {
 		ServicoView.getContentPane().add(txtDescricao);
 		
 		JButton button = new JButton("Atualizar");
-		button.setBounds(422, 282, 143, 34);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CsiFacade facade = new CsiFacade();
+				Servico[] se = facade.findAllServico();
+				for (int i = 0; i < se.length; i++) {
+					//System.out.println(se[i]);
+					JOptionPane.showInputDialog(se[i]);
+					}
+			}
+		});
+		button.setBounds(427, 212, 143, 34);
 		button.setForeground(Color.WHITE);
 		button.setFont(new Font("Tahoma", Font.BOLD, 14));
 		button.setBackground(Color.BLUE);
@@ -145,7 +154,7 @@ public class ServicoView {
 		ServicoView.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Ricardo\\Downloads\\customer-service_icon-icons.com_51012.png"));
 		lblNewLabel.setBounds(269, 35, 64, 64);
 		panel.add(lblNewLabel);
@@ -160,16 +169,16 @@ public class ServicoView {
 		JButton button_1 = new JButton("Remover");
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			}
+				
+				
+			}		
 		});
 		button_1.setForeground(Color.WHITE);
 		button_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		button_1.setBackground(Color.BLUE);
-		button_1.setBounds(255, 327, 143, 34);
+		button_1.setBounds(255, 282, 143, 34);
 		ServicoView.getContentPane().add(button_1);
 	}
 	
-	public boolean checkExistencia (String nome, String descricao) {
-		return nome.equals("CPU") && descricao.equals("Nao liga");
-	}
+
 }
