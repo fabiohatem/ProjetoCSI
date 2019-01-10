@@ -15,15 +15,22 @@ import javax.swing.SwingConstants;
 
 import br.ufrpe.app.controller.CsiFacade;
 import br.ufrpe.app.model.dao.ServicoDao;
+import br.ufrpe.app.model.dao.UsuarioDao;
 import br.ufrpe.app.model.dao.daoImpl.ServicoDaoImpl;
+import br.ufrpe.app.model.dao.daoImpl.UsuarioDaoImpl;
 import br.ufrpe.app.model.entity.Servico;
 import br.ufrpe.app.util.exception.ServicoException;
+import br.ufrpe.app.util.exception.UsuarioException;
 
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 
 public class ServicoView extends javax.swing.JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JFrame ServicoView;
 	private JTextField txtNome;
 	private JTextField txtDescricao;
@@ -105,18 +112,19 @@ public class ServicoView extends javax.swing.JFrame {
 				CsiFacade facade = new CsiFacade();
 				ServicoDao ser = ServicoDaoImpl.getInstance();
 				
+				if(txtNome.getText().trim().equals("") || txtDescricao.getText().trim().equals("")) {
+					JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Tela de cadastro de serviço", JOptionPane.WARNING_MESSAGE);
+				} else {
 				try {
 					ser.create(servico);
-					/*if(txtNome.getText().trim().equals("") || txtDescricao.getText().trim().equals("")) {
-						JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Tela de cadastro de serviço", JOptionPane.WARNING_MESSAGE);
-					} */
 					ser.salvarArquivo();
 					JOptionPane.showMessageDialog(null, "Serviço cadastrado", "Tela de cadastro de serviço", JOptionPane.INFORMATION_MESSAGE);
 				} catch (ServicoException e) {
 					JOptionPane.showMessageDialog(null, "Serviço já foi cadastrado", "Tela de cadastro de serviço", JOptionPane.ERROR_MESSAGE);
-				}
+				} 
 				txtNome.setText("");
 				txtDescricao.setText("");
+				}
 			}
 		});
 		ServicoView.getContentPane().add(btnNovo);
@@ -170,15 +178,30 @@ public class ServicoView extends javax.swing.JFrame {
 				
 				CsiFacade facade = new CsiFacade();
 				String nome = txtNome.getText();
-				ServicoDao ser = ServicoDaoImpl.getInstance();
+				String descricao = txtDescricao.getText();
+				//ServicoDao ser = ServicoDaoImpl.getInstance();
 				
-				try {
+				if ((txtNome.getText().isEmpty()) || (txtDescricao.getText().isEmpty())) {
+					   JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
+					}
+					else {
+						Servico servico = new Servico(nome, descricao);
+						ServicoDao ser = ServicoDaoImpl.getInstance();
+					    try {
+							ser.create(servico);
+							ser.salvarArquivo();
+						} catch (ServicoException error) {
+							
+						}
+					    JOptionPane.showMessageDialog(null, "Serviço "+txtNome.getText()+" inserido com sucesso! ");
+					}
+				/*try {
 					ser.findByNome(nome);
 					JOptionPane.showMessageDialog(null, "Serviço achado e removido com sucesso", "Tela de cadastro de serviço", JOptionPane.INFORMATION_MESSAGE);
 					ser.delete(nome);
 				} catch (Exception error) {
 					JOptionPane.showMessageDialog(null, "Serviço não foi achado", "Tela de cadastro de serviço", JOptionPane.ERROR_MESSAGE);
-				}
+				}*/
 				
 				
 				
