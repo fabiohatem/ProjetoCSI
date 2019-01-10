@@ -11,7 +11,7 @@ public class OrgaoTest {
 		
 		CsiFacade facade= new CsiFacade();
 		OrgaoDao org = OrgaoDaoImpl.getInstance();
-		
+		//Digite abaixo , o nome e a sigla do orgao para fazer o teste!!
 		Orgao o = new Orgao("Administrador","ADM");
 		
 		org.create(o);
