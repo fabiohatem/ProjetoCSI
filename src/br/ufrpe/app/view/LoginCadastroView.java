@@ -9,20 +9,33 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import br.ufrpe.app.controller.CsiFacade;
+import br.ufrpe.app.model.dao.UsuarioDao;
+import br.ufrpe.app.model.dao.daoImpl.UsuarioDaoImpl;
+import br.ufrpe.app.util.exception.UsuarioException;
 import br.ufrpe.app.view.UsuarioViewTeste;
 
 public class LoginCadastroView extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JFrame frmreaDeAcesso;
 	private JTextField txtLogin;
 	private JPasswordField txtSenha;
-
+	
+	private boolean logged;
+    
+	public boolean isLogged() {
+        return logged;
+    }
 	/**
 	 * Launch the application.
 	 */
@@ -106,7 +119,16 @@ public class LoginCadastroView extends JFrame {
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CsiFacade facade = new CsiFacade();
+				ServicoView servico = new ServicoView();
 				
+				if ((txtLogin.getText().isEmpty()) || (txtSenha.getText().isEmpty())) {
+					   JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
+					}
+					else if (txtLogin.getText().equals("adm") &&
+	                    txtSenha.getText().equals("123")) {
+						servico.setVisible(true);
+	                    dispose();
+					}
 			}
 		});
 		btnEntrar.setBounds(86, 270, 96, 35);
