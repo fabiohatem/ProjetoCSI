@@ -187,12 +187,8 @@ public class ServicoView extends javax.swing.JFrame {
 					else {
 						Servico servico = new Servico(nome, descricao);
 						ServicoDao ser = ServicoDaoImpl.getInstance();
-					    try {
-							ser.create(servico);
-							ser.salvarArquivo();
-						} catch (ServicoException error) {
-							
-						}
+					    ser.contem(servico);
+						ser.delete(nome);
 					    JOptionPane.showMessageDialog(null, "Serviço "+txtNome.getText()+" removido com sucesso! ");
 					}
 				/*try {
