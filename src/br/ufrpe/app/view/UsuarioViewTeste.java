@@ -195,12 +195,14 @@ public class UsuarioViewTeste extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				CsiFacade facade = new CsiFacade();
 				String login = txtLogin.getText();
+				String matricula = textField_1.getText();
 				UsuarioDao us = UsuarioDaoImpl.getInstance();
 				
 				try {
-					us.findByLogin(login); //&& us.findByMatricula(matricula);
+					us.findByMatricula(matricula);
 					JOptionPane.showMessageDialog(null, "Usuário achado e removido com sucesso", "Tela de cadastro ao usuário", JOptionPane.INFORMATION_MESSAGE);
-					us.delete(login);
+					us.delete(matricula);
+					
 				} catch (Exception error) {
 					JOptionPane.showMessageDialog(null, "Usuário não foi achado", "Tela de cadastro ao usuário", JOptionPane.ERROR_MESSAGE);
 				}
