@@ -158,6 +158,7 @@ public class OrgaoViewTeste extends javax.swing.JFrame {
 				for (int i = 0; i < or.length; i++) {
 					JOptionPane.showInputDialog(or[i]);
 					} 
+				
 			}
 		});
 				
