@@ -115,16 +115,8 @@ public class ServicoView extends javax.swing.JFrame {
 				} catch (ServicoException e) {
 					JOptionPane.showMessageDialog(null, "Serviço já foi cadastrado", "Tela de cadastro de serviço", JOptionPane.ERROR_MESSAGE);
 				}
-				
-	
-			/*	if(checkExistencia(txtNome.getText(), txtDescricao.getText())) {
-		
-					JOptionPane.showMessageDialog(null, "Serviço já foi cadastrado", "Tela de cadastro de serviço", JOptionPane.ERROR_MESSAGE);
-				} else {
-					
-					JOptionPane.showMessageDialog(null, "Serviço cadastrado", "Tela de cadastro de serviço", JOptionPane.INFORMATION_MESSAGE);
-					
-				}*/
+				txtNome.setText("");
+				txtDescricao.setText("");
 			}
 		});
 		ServicoView.getContentPane().add(btnNovo);
@@ -139,12 +131,11 @@ public class ServicoView extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				CsiFacade facade = new CsiFacade();
-				// Servico servico = new Servico();
-				// ServicoDao ser = ServicoDaoImpl.getInstance();
+				ServicoDao ser = ServicoDaoImpl.getInstance();
+				 
 				Servico[] se = facade.findAllServico();
 				// ser.update(servico);
 				 for (int i = 0; i < se.length; i++) {
-					//System.out.println(se[i]);
 					JOptionPane.showInputDialog(se[i]);
 					} 
 			}
