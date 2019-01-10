@@ -191,6 +191,9 @@ public class ServicoView extends javax.swing.JFrame {
 						ser.delete(nome);
 					    JOptionPane.showMessageDialog(null, "Serviço "+txtNome.getText()+" removido com sucesso! ");
 					}
+				
+				txtNome.setText("");
+				txtDescricao.setText("");
 				/*try {
 					ser.findByNome(nome);
 					JOptionPane.showMessageDialog(null, "Serviço achado e removido com sucesso", "Tela de cadastro de serviço", JOptionPane.INFORMATION_MESSAGE);
