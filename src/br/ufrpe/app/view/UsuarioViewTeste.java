@@ -198,14 +198,16 @@ public class UsuarioViewTeste extends JFrame{
 				String matricula = textField_1.getText();
 				UsuarioDao us = UsuarioDaoImpl.getInstance();
 				
-				try {
-					us.findByMatricula(matricula);
-					JOptionPane.showMessageDialog(null, "Usuário achado e removido com sucesso", "Tela de cadastro ao usuário", JOptionPane.INFORMATION_MESSAGE);
-					us.delete(matricula);
-					
-				} catch (Exception error) {
-					JOptionPane.showMessageDialog(null, "Usuário não foi achado", "Tela de cadastro ao usuário", JOptionPane.ERROR_MESSAGE);
-				}
+				if ((txtLogin.getText().isEmpty()) || (txtSenha.getText().isEmpty()) || (textField.getText().isEmpty()) || (textField_1.getText().isEmpty())) {
+					   JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
+					}
+					else {
+						Usuario usuarios = new Usuario();
+						UsuarioDao usa = UsuarioDaoImpl.getInstance();
+					    us.contem(usuarios);
+						us.delete(matricula);
+					    JOptionPane.showMessageDialog(null, "Usuário "+txtLogin.getText()+" removido com sucesso! ");
+					}
 			}
 		});
 		button.setHorizontalAlignment(SwingConstants.LEFT);
