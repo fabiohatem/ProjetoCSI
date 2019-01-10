@@ -149,6 +149,18 @@ public class OrgaoViewTeste extends javax.swing.JFrame {
 		OrgaoView.getContentPane().add(button);
 		
 		JButton button_1 = new JButton("Procurar");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent o) {
+				CsiFacade facade = new CsiFacade ();
+				OrgaoDao org=OrgaoDaoImpl.getInstance();
+				
+				Orgao[]or=facade.findAllOrgao();
+				for (int i = 0; i < or.length; i++) {
+					JOptionPane.showInputDialog(or[i]);
+					} 
+			}
+		});
+				
 		button_1.setForeground(Color.WHITE);
 		button_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		button_1.setBackground(Color.BLUE);
@@ -160,10 +172,25 @@ public class OrgaoViewTeste extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				CsiFacade facade= new CsiFacade();
+				String nome=txtNome.getText();
 				String sigla=txtSigla.getText();
-				OrgaoDao org= OrgaoDaoImpl.getInstance();
+				//OrgaoDao org= OrgaoDaoImpl.getInstance();
+				if((txtSigla.getText().isEmpty()) || (txtNome.getText().isEmpty())) {
+					JOptionPane.showMessageDialog(null,"Preencha Todos os Campos");
+				} else {
+					Orgao orgao = new Orgao (nome,sigla);
+					OrgaoDao org = OrgaoDaoImpl.getInstance();
+					org.contem(orgao);
+					org.delete(sigla);
+					JOptionPane.showMessageDialog(null, "Orgão "+txtNome.getText()+" removido com sucesso! ");
+				}
 				
-				try {
+				
+				
+
+				
+				
+				/*try {
 					org.findBySigla(sigla);
 					org.delete(sigla);
 					JOptionPane.showMessageDialog(null, "Orgao Achado e Removido com Sucesso", "Orgao Screen", JOptionPane.INFORMATION_MESSAGE);
@@ -171,7 +198,7 @@ public class OrgaoViewTeste extends javax.swing.JFrame {
 				} catch (Exception error){
 					
 					JOptionPane.showMessageDialog(null, "Orgao Não Achado", "Orgao Screen", JOptionPane.ERROR_MESSAGE);
-				}
+				}*/
 				
 			}
 		});
