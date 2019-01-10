@@ -44,7 +44,7 @@ public class UsuarioViewTeste extends JFrame{
 	private JTextField textField_1;
 	private JButton button_1;
 	private JButton btnSair;
-
+	 
 	public boolean checkLogin (String login, String senha) {
 		return login.equals("Usuario") && senha.equals("123");
 		
@@ -154,7 +154,8 @@ public class UsuarioViewTeste extends JFrame{
 				Usuario usuario = new Usuario(nome,matricula,login, senha);
 				
 				CsiFacade facade = new CsiFacade();
-				UsuarioDao ser = UsuarioDaoImpl.getInstance();
+				UsuarioDao us = UsuarioDaoImpl.getInstance();
+				
 
 			}
 		});
