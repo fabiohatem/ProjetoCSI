@@ -107,9 +107,9 @@ public class ServicoView extends javax.swing.JFrame {
 				
 				try {
 					ser.create(servico);
-					if(txtNome.getText().trim().equals("") || txtDescricao.getText().trim().equals("")) {
+					/*if(txtNome.getText().trim().equals("") || txtDescricao.getText().trim().equals("")) {
 						JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Tela de cadastro de serviço", JOptionPane.WARNING_MESSAGE);
-					}
+					} */
 					ser.salvarArquivo();
 					JOptionPane.showMessageDialog(null, "Serviço cadastrado", "Tela de cadastro de serviço", JOptionPane.INFORMATION_MESSAGE);
 				} catch (ServicoException e) {

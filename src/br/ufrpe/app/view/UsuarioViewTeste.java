@@ -19,6 +19,8 @@ import br.ufrpe.app.model.dao.ServicoDao;
 import br.ufrpe.app.model.dao.UsuarioDao;
 import br.ufrpe.app.model.dao.daoImpl.ServicoDaoImpl;
 import br.ufrpe.app.model.dao.daoImpl.UsuarioDaoImpl;
+import br.ufrpe.app.model.entity.Servico;
+import br.ufrpe.app.model.entity.Solicitacao;
 import br.ufrpe.app.model.entity.Usuario;
 import br.ufrpe.app.util.exception.UsuarioException;
 
@@ -28,7 +30,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 
-public class UsuarioViewTeste {
+public class UsuarioViewTeste extends JFrame{
 
 	private JFrame frmPrincipal;
 	private final JPanel panel = new JPanel();
@@ -41,7 +43,7 @@ public class UsuarioViewTeste {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JButton button_1;
-	private JButton button_2;
+	private JButton btnSair;
 
 	public boolean checkLogin (String login, String senha) {
 		return login.equals("Usuario") && senha.equals("123");
@@ -77,20 +79,6 @@ public class UsuarioViewTeste {
 	 * Create the application.
 	 */
 	public UsuarioViewTeste() {
-		
-		CsiFacade facade = new CsiFacade();
-		UsuarioDao ser = UsuarioDaoImpl.getInstance();
-		
-		//Criando um usuário para teste....
-		Usuario usTest = new Usuario("abc","abc","abc","abc");
-		try {
-			ser.create(usTest);
-			System.out.println("usuário cadastrado!");
-		} catch (UsuarioException e1) {
-			// TODO Auto-generated catch block
-			System.out.println("usuário não cadrastado!");
-		}
-		
 		
 		initialize();
 		
@@ -158,7 +146,6 @@ public class UsuarioViewTeste {
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
 				String login = txtLogin.getText();
 				String senha = txtSenha.getText();
 				String nome = textField.getText();
@@ -168,40 +155,14 @@ public class UsuarioViewTeste {
 				
 				CsiFacade facade = new CsiFacade();
 				UsuarioDao ser = UsuarioDaoImpl.getInstance();
-				
-				
-				boolean tem = ser.contem(usuario);
-				if(tem == true) {
-					// Chamar tela caso usuário seja encontrado
-					JOptionPane.showMessageDialog(null, "Usuário encontrado!");
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "Usuário não encontrado!");
-				}
-				
-				
-				
-				
-				
-				
-				/*if(checkLogin(txtLogin.getText(), txtSenha.getText())) {
-					JOptionPane.showMessageDialog(null, "Dados inválidos", "Tela de cadastro de usuário", JOptionPane.ERROR_MESSAGE);
-				} else {
-					
-				JOptionPane.showMessageDialog(null, "Entrando no sistema...", "Tela de cadastro de usuário", JOptionPane.INFORMATION_MESSAGE);
-					
-				} */
-				
-				if(txtLogin.getText().trim().equals("") || txtSenha.getText().trim().equals("")) {
-					JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Tela de cadastro de usuário", JOptionPane.WARNING_MESSAGE);
-				}
+
 			}
 		});
 		btnEntrar.setIcon(new ImageIcon("C:\\Users\\Ricardo\\Documents\\UFRPE\\PROGRAMA\u00C7\u00C3O\\JAVA\\Projeto - Programa\u00E7\u00E3o\\login.png"));
 		btnEntrar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnEntrar.setForeground(Color.WHITE);
 		btnEntrar.setBackground(Color.BLUE);
-		btnEntrar.setBounds(284, 327, 143, 34);
+		btnEntrar.setBounds(284, 272, 143, 34);
 		panel.add(btnEntrar);
 		
 		JLabel lblNome = new JLabel("Nome");
@@ -229,6 +190,21 @@ public class UsuarioViewTeste {
 		panel.add(lblMatrcula);
 		
 		JButton button = new JButton("Remover");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CsiFacade facade = new CsiFacade();
+				String login = txtLogin.getText();
+				UsuarioDao us = UsuarioDaoImpl.getInstance();
+				
+				try {
+					us.findByLogin(login); //&& us.findByMatricula(matricula);
+					JOptionPane.showMessageDialog(null, "Usuário achado e removido com sucesso", "Tela de cadastro ao usuário", JOptionPane.INFORMATION_MESSAGE);
+					us.delete(login);
+				} catch (Exception error) {
+					JOptionPane.showMessageDialog(null, "Usuário não foi achado", "Tela de cadastro ao usuário", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		button.setHorizontalAlignment(SwingConstants.LEFT);
 		button.setIcon(new ImageIcon("C:\\Users\\Ricardo\\Downloads\\trashcan_full_15175.png"));
 		button.setForeground(Color.WHITE);
@@ -242,6 +218,12 @@ public class UsuarioViewTeste {
 		button_1.setIcon(new ImageIcon("C:\\Users\\Ricardo\\Downloads\\blue_upgrade_recyclearrows_arrow_azul_12426.png"));
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				CsiFacade facade = new CsiFacade();
+				Usuario[] us = facade.findAllUsuario();
+				 for (int i = 0; i < us.length; i++) {
+					//System.out.println(se[i]);
+					JOptionPane.showInputDialog(us[i]);
+					} 
 			}
 		});
 		button_1.setForeground(Color.WHITE);
@@ -250,17 +232,60 @@ public class UsuarioViewTeste {
 		button_1.setBounds(284, 383, 143, 34);
 		panel.add(button_1);
 		
-		button_2 = new JButton("Voltar");
-		button_2.setHorizontalAlignment(SwingConstants.LEFT);
-		button_2.setIcon(new ImageIcon("C:\\Users\\Ricardo\\Downloads\\arrow_left_17809.png"));
-		button_2.addActionListener(new ActionListener() {
+		btnSair = new JButton("Sair");
+		btnSair.setHorizontalAlignment(SwingConstants.LEFT);
+		btnSair.setIcon(new ImageIcon("C:\\Users\\Ricardo\\Downloads\\arrow_left_17809.png"));
+		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
 			}
 		});
-		button_2.setForeground(Color.WHITE);
-		button_2.setFont(new Font("Tahoma", Font.BOLD, 14));
-		button_2.setBackground(Color.BLUE);
-		button_2.setBounds(437, 383, 143, 34);
-		panel.add(button_2);
+		btnSair.setForeground(Color.WHITE);
+		btnSair.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnSair.setBackground(Color.BLUE);
+		btnSair.setBounds(437, 383, 143, 34);
+		panel.add(btnSair);
+		
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Usuario usuarios = new Usuario();
+				usuarios.setLogin(txtLogin.getText());
+				usuarios.setSenha(txtSenha.getText());
+				usuarios.setNome(textField.getText());
+				usuarios.setMatricula(textField_1.getText());
+				
+				CsiFacade facade = new CsiFacade();
+
+				// fazendo a validação dos dados
+				if ((txtLogin.getText().isEmpty()) || (txtSenha.getText().isEmpty()) || (textField.getText().isEmpty()) || (textField_1.getText().isEmpty())) {
+				   JOptionPane.showMessageDialog(null, "Os campos não podem retornar vazios");
+				}
+				else {
+
+				    // instanciando a classe UsuarioDAO do pacote dao e criando seu objeto dao
+					UsuarioDao us = UsuarioDaoImpl.getInstance();
+				    try {
+						us.create(usuarios);
+						us.salvarArquivo();
+					} catch (UsuarioException e) {
+						
+					}
+				    JOptionPane.showMessageDialog(null, "Usuário "+txtLogin.getText()+" inserido com sucesso! ");
+				}
+
+				// apaga os dados preenchidos nos campos de texto
+				txtLogin.setText("");
+				txtSenha.setText("");
+				textField.setText("");
+				textField_1.setText("");
+			}
+		});
+		btnCadastrar.setForeground(Color.WHITE);
+		btnCadastrar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnCadastrar.setBackground(Color.BLUE);
+		btnCadastrar.setBounds(284, 327, 143, 34);
+		panel.add(btnCadastrar);
 	}
 }
