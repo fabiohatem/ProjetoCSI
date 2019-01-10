@@ -6,16 +6,27 @@ import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+
+import br.ufrpe.app.controller.CsiFacade;
+import br.ufrpe.app.model.dao.OrgaoDao;
+import br.ufrpe.app.model.dao.daoImpl.OrgaoDaoImpl;
+import br.ufrpe.app.model.dao.daoImpl.ServicoDaoImpl;
+import br.ufrpe.app.model.entity.Orgao;
+import br.ufrpe.app.util.exception.OrgaoException;
+
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class OrgaoViewTeste {
+public class OrgaoViewTeste extends javax.swing.JFrame {
 
+	
 	private JFrame OrgaoView;
 	private JTextField txtNome;
 	private JTextField txtSigla;
@@ -112,6 +123,28 @@ public class OrgaoViewTeste {
 		button.setFont(new Font("Tahoma", Font.BOLD, 14));
 		button.setBackground(Color.BLUE);
 		button.setBounds(72, 354, 143, 34);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				String nome =txtNome.getText();
+				String sigla=txtSigla.getText();
+				
+				Orgao orgao= new Orgao(nome,sigla);
+				
+				CsiFacade facade = new CsiFacade();
+				OrgaoDao ser= OrgaoDaoImpl.getInstance();
+				
+				try {
+					ser.create(orgao);
+					ser.salvarArquivo();
+					JOptionPane.showMessageDialog(null,"Orgao Adicionado" , "Orgao Screen", JOptionPane.INFORMATION_MESSAGE);
+				} catch (OrgaoException e) {
+					JOptionPane.showMessageDialog(null, "Orgão já Adicionado", "Orgao Screen", JOptionPane.ERROR_MESSAGE);
+				}
+				txtNome.setText("");
+				txtSigla.setText("");
+			}
+		});
 		OrgaoView.getContentPane().add(button);
 		
 		JButton button_1 = new JButton("Procurar");
@@ -124,6 +157,21 @@ public class OrgaoViewTeste {
 		JButton button_2 = new JButton("Remover");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				CsiFacade facade= new CsiFacade();
+				String sigla=txtSigla.getText();
+				OrgaoDao ser= OrgaoDaoImpl.getInstance();
+				
+				try {
+					ser.findBySigla(sigla);
+					ser.delete(sigla);
+					JOptionPane.showMessageDialog(null, "Orgao Achado e Removido com Sucesso", "Orgao Screen", JOptionPane.INFORMATION_MESSAGE);
+					
+				} catch (Exception error){
+					
+					JOptionPane.showMessageDialog(null, "Orgao Não Achado", "Orgao Screen", JOptionPane.ERROR_MESSAGE);
+				}
+				
 			}
 		});
 		button_2.setForeground(Color.WHITE);
