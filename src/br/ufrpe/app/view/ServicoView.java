@@ -193,7 +193,7 @@ public class ServicoView extends javax.swing.JFrame {
 						} catch (ServicoException error) {
 							
 						}
-					    JOptionPane.showMessageDialog(null, "Serviço "+txtNome.getText()+" inserido com sucesso! ");
+					    JOptionPane.showMessageDialog(null, "Serviço "+txtNome.getText()+" removido com sucesso! ");
 					}
 				/*try {
 					ser.findByNome(nome);
