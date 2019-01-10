@@ -132,11 +132,11 @@ public class OrgaoViewTeste extends javax.swing.JFrame {
 				Orgao orgao= new Orgao(nome,sigla);
 				
 				CsiFacade facade = new CsiFacade();
-				OrgaoDao ser= OrgaoDaoImpl.getInstance();
+				OrgaoDao org= OrgaoDaoImpl.getInstance();
 				
 				try {
-					ser.create(orgao);
-					ser.salvarArquivo();
+					org.create(orgao);
+					org.salvarArquivo();
 					JOptionPane.showMessageDialog(null,"Orgao Adicionado" , "Orgao Screen", JOptionPane.INFORMATION_MESSAGE);
 				} catch (OrgaoException e) {
 					JOptionPane.showMessageDialog(null, "Orgão já Adicionado", "Orgao Screen", JOptionPane.ERROR_MESSAGE);
@@ -145,6 +145,7 @@ public class OrgaoViewTeste extends javax.swing.JFrame {
 				txtSigla.setText("");
 			}
 		});
+		
 		OrgaoView.getContentPane().add(button);
 		
 		JButton button_1 = new JButton("Procurar");
@@ -160,11 +161,11 @@ public class OrgaoViewTeste extends javax.swing.JFrame {
 				
 				CsiFacade facade= new CsiFacade();
 				String sigla=txtSigla.getText();
-				OrgaoDao ser= OrgaoDaoImpl.getInstance();
+				OrgaoDao org= OrgaoDaoImpl.getInstance();
 				
 				try {
-					ser.findBySigla(sigla);
-					ser.delete(sigla);
+					org.findBySigla(sigla);
+					org.delete(sigla);
 					JOptionPane.showMessageDialog(null, "Orgao Achado e Removido com Sucesso", "Orgao Screen", JOptionPane.INFORMATION_MESSAGE);
 					
 				} catch (Exception error){
